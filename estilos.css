@@ -259,6 +259,14 @@ button {
 }
 
 @media screen and (max-width: 576px) {
+  .header .contenedor-logo .boton-menu {
+    margin-right: 0;
+  }
+
+  .header .contenedor-logo .logo span {
+    display: none;
+  }
+
   .main .grid-videos {
     grid-template-columns: 1fr;
   }
