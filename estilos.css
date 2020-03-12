@@ -1,0 +1,265 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+button {
+  outline: none;
+}
+
+.contenedor {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 90px auto;
+  grid-template-rows: 60px auto;
+  grid-template-areas: "header header"
+                       "menu   contenido";
+  transition: all .3s ease;
+}
+
+.contenedor.active {
+  grid-template-columns: 300px auto;
+}
+
+
+/* ----- ----- HEADER ----- ----- */
+
+.header {
+  grid-area: header;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 20px;
+  grid-template-areas: "logo busqueda iconos";
+}
+
+/* ----- ----- HEADER - CONTENEDOR LOGO ----- ----- */
+.header .contenedor-logo {
+  grid-area: logo;
+}
+
+.header .contenedor-logo .boton-menu {
+  border: none;
+  padding: 10px;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+.header .contenedor-logo .boton-menu:hover {
+  background-color: #E7E7E7;
+}
+
+.header .contenedor-logo .logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+  position: relative;
+  top: 2px;
+}
+.header .contenedor-logo .logo .fas {
+  background-color: #FF0000;
+  padding: 7px 12px;
+  border-radius: 4px;
+  font-size: 8px;
+  color: #FFF;
+  position: relative;
+  top: -4px;
+  margin-right: 4px;
+}
+
+/* ----- ----- HEADER - BARRA BUSQUEDA ----- ----- */
+.header .barra-busqueda {
+  grid-area: busqueda;
+  display: flex;
+  justify-content: center;
+}
+
+.header .barra-busqueda input {
+  min-width: 60%;
+  padding: 0 15px;
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #CCC;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.header .barra-busqueda button {
+  height: 35px;
+  border: 1px solid #CCC;
+  border-left: 0;
+  color: #545454;
+  padding: 0 25px;
+  cursor: pointer;
+}
+.header .barra-busqueda button:hover {
+  background-color: #F5F5F5;
+}
+
+/* ----- ----- HEADER - BOTONES ----- ----- */
+.header .botones-header {
+  grid-area: iconos;
+  display: flex;
+  align-items: center;
+}
+
+.header .botones-header button {
+  background: none;
+  border: none;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  padding: 7px 12px;
+  border-radius: 100px;
+  color: #828282;
+  cursor: pointer;
+}
+.header .botones-header button:hover {
+  background-color: #E7E7E7;
+}
+
+.header .botones-header .avatar {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.header .botones-header .avatar img {
+  width: 100%;
+  border-radius: 100px;
+}
+
+/*
+  ----- ----- Menú lateral ----- -----
+*/
+
+.menu-lateral {
+  grid-area: menu;
+  overflow: hidden;
+}
+
+.menu-lateral a {
+  display: block;
+  padding: 15px 35px;
+  color: #000;
+  min-width: 300px;
+}
+.menu-lateral a:hover {
+  background-color: #E5E5E5;
+}
+
+.menu-lateral a.active {
+  background-color: #E5E5E5;
+  font-weight: bold;
+}
+
+.menu-lateral .fas {
+  color: #606060;
+  margin-right: 32px;
+  width: 20px;
+  text-align: center;
+}
+
+.menu-lateral a.active .fas {
+  color: #FF0000;
+}
+
+.menu-lateral hr {
+  margin: 20px 0;
+  border: 1px solid #DFDFDF;
+}
+
+/* ----- ----- Contenido principal ----- ----- */
+
+.main {
+  grid-area: contenido;
+  background: #F9F9F9;
+  padding: 40px;
+}
+
+.main .titulo {
+  margin-bottom: 20px;
+}
+
+.main .grid-videos {
+  display: grid;
+  grid-gap: 40px 20px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.main .grid-videos .video {
+  width: 100%;
+}
+
+.main .grid-videos .video img {
+  width: 100%;
+}
+
+/* ----- ----- Responsive ----- ----- */
+
+@media screen and (max-width: 1200px) {
+  .main .grid-videos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header .contenedor-logo .logo span {
+    display: none;
+  }
+
+  .header .barra-busqueda input {
+    min-width: 70%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .main .grid-videos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contenedor {
+    grid-template-rows: auto;
+  }
+
+  .header {
+    padding: 20px;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    grid-template-areas: "logo     iconos"
+                         "busqueda busqueda";
+  }
+
+  .header .contenedor-logo .logo span {
+    display: inline;
+  }
+
+  .header .barra-busqueda input {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main .grid-videos {
+    grid-template-columns: 1fr;
+  }
+}
